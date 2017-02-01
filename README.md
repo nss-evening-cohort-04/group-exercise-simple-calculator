@@ -6,7 +6,7 @@ Create a Console based Calculator in C#.
 
 ## Rules
 
-- Everyone forks this repo (then clone your fork).
+- Every team forks this repo (then each team member clones your fork).
 - There should be Unit Tests on all classes and methods you create.
 - Your solution should have at least 2 total projects. Unit Tests should be in it's own project.
 - This is an OOP focused class. Therefore, there will be classes. Your `Program` class and `Main` method should only be responsible for receiving user input and printing output.
