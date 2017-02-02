@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
 namespace SimpleCalculator
 {
-    class Program
+    public class Integer
     {
-        static void Main(string[] args)
-        {
-            
-        }
+
     }
 }
