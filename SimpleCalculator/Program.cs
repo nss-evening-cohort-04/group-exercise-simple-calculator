@@ -10,10 +10,13 @@ namespace SimpleCalculator
     {
         static void Main(string[] args)
         {
-            
+
             ////// foundational elements
             // initialize Parser HERE
+            Parser parser = new Parser();
+
             // initialize Evaluator HERE
+            Evaluate evalute = new Evalute();
 
             while (true)
             {
