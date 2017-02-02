@@ -12,9 +12,6 @@ namespace SimpleCalculator
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
-            
-=======
             int x = 0;
             while(true)
             {
@@ -47,7 +44,6 @@ namespace SimpleCalculator
                     Console.WriteLine("Please enter in the formatt of (1 + 1) or (1+1)");
                 }
             }
->>>>>>> master
         }
     }
 }
