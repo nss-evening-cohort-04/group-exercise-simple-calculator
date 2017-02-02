@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace SimpleCalculator
 {
-    class Evaluate
+    public class Evaluate
     {
+        public int Multiply(int a, int b)
+        {
+            return a * b;
+        }
+
+        public int Divide(int a, int b)
+        {
+            return a / b;
+        }
+
+        public int Modulus(int a, int b)
+        {
+            return a % b;
+        }
     }
 }
