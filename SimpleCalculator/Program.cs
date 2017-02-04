@@ -11,7 +11,6 @@ namespace SimpleCalculator
     {
         static void Main(string[] args)
         {
-
             int counter = 0;
             Console.WriteLine($"[{counter}]");
             
@@ -20,9 +19,7 @@ namespace SimpleCalculator
             var responseTest = Expression.getMathExpression(command);
             Console.WriteLine(responseTest[2]);
 
-
             Console.ReadLine();
-
         }
     }
 }

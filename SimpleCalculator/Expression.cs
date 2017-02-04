@@ -42,7 +42,7 @@ namespace SimpleCalculator
                 return new string[] {temporaryInstance.leftValue, temporaryInstance.Operator, temporaryInstance.rightValue };
             }else
             {
-                return new string[] { };
+                return new string[] {};
             }
 
         }
