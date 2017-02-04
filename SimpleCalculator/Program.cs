@@ -12,7 +12,9 @@ namespace SimpleCalculator
     {
         static void Main(string[] args)
         {
+
             Dictionary<string, int> myConstants = new Dictionary<string, int>();
+
             int counter = 0;
             string myOperator = " ";
             string command = "", firstOp = "", secondOp = "";
@@ -29,6 +31,9 @@ namespace SimpleCalculator
             secondOp = commandKyes[2];
             bool isNumeric1 = int.TryParse(firstOp, out firstOpNum);
             bool isNumeric2 = int.TryParse(secondOp, out secondOpNum);
+
+
+            Console.ReadLine();
 
 
             if (Char.IsLetter(firstOp, 0) && firstOp.Length == 1)
@@ -94,6 +99,7 @@ namespace SimpleCalculator
                 }
             }
             counter++;
+
         }
     }
 }

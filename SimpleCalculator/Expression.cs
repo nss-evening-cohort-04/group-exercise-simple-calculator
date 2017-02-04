@@ -43,7 +43,9 @@ namespace SimpleCalculator
             }
             else
             {
+
                 return new string[] { "Weird! Not working" };
+
             }
 
         }
