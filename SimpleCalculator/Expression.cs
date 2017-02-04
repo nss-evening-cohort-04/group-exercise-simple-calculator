@@ -9,12 +9,12 @@ namespace SimpleCalculator
 {
     public class Expression
     {
-        
+
         public string Operator { get; set; }
         public string leftValue { get; set; }
         public string rightValue { get; set; }
         //string pattern = ;
-       //public string input = "2+2";
+        //public string input = "2+2";
 
         public Expression()
         {
@@ -39,12 +39,15 @@ namespace SimpleCalculator
                 temporaryInstance.leftValue = (string)m.Groups["number1"].Value;
                 temporaryInstance.Operator = m.Groups["operator"].Value;
                 temporaryInstance.rightValue = (string)m.Groups["number2"].Value;
-                return new string[] {temporaryInstance.leftValue, temporaryInstance.Operator, temporaryInstance.rightValue };
-            }else
+                return new string[] { temporaryInstance.leftValue, temporaryInstance.Operator, temporaryInstance.rightValue };
+            }
+            else
             {
-                return new string[] {};
+
+                return new string[] { "Weird! Not working" };
+
             }
 
         }
-}
+    }
 }
