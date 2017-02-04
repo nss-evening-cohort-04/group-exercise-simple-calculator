@@ -17,21 +17,17 @@ namespace SimpleCalculator
             try
             {
                 string[] splitStr = input.Trim().Split(operators);
-                string firstTerm = "-1";
-                string secondTerm = "-1";
+                int firstTerm = -1;
+                int secondTerm = -1;
                 char mathOperator = 'a';
                 if (splitStr.Length > 1)
                 {
-                    firstTerm = splitStr[0].Trim();
+                    firstTerm = int.Parse(splitStr[0].Trim());
                     mathOperator = input[splitStr[0].Length];
-                    secondTerm = splitStr[1].Trim();
-                }
-                else
-                {
-
+                    secondTerm = int.Parse(splitStr[1].Trim());
                 };
                     
-                return new Expression(Convert.ToInt32(firstTerm), Convert.ToInt32(secondTerm), Convert.ToChar(mathOperator));
+                return new Expression(firstTerm, secondTerm, mathOperator);
             }
             catch (Exception)
             {
