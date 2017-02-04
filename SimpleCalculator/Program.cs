@@ -17,27 +17,44 @@ namespace SimpleCalculator
 
             // initialize Evaluator HERE
             Evaluate evaluate = new Evaluate();
-            int calculatedResult = evaluate.Calculate(parser.Operand1, parser.Operand2, parser.Operation);
 
-            while (true)
+            List<string> Escape = new List<string>() { "quit", "exit", "escape" }; // exit commands
+            string lastq = "lastq";
+            string lastanswer = "last";
+
+
+                while (true)
             {
                 // ask the user for a basic mathematical equation
                 Console.WriteLine("Please type a basic expression you would like me to find the answer to.");
                 Console.WriteLine("Include one of the following operators: + - * /.");
                 string userInput = Console.ReadLine();
 
-                //evaluate input
-                try
+                if (Escape.Contains(userInput))
                 {
-                    // send user input to parser function
-                    string calculatorAnswer = ""; // the result of the evaluate functions is stored in this variable
-                    Console.WriteLine(calculatorAnswer);
-                }
-                catch (Exception)
+                    Environment.Exit(0);
+                } else if (userInput.Equals(lastq))
                 {
-                    Console.WriteLine($"Sorry, { userInput} is not a valid request.");
-                    Console.WriteLine("Try again, something more simple like: 2 + 1. Take it easy on me");
+                    // lastq from stack
+                } else if (userInput.Equals(lastanswer))
+                {
+                    // calls lastanswer from stack
+                } else
+                {
+                    //evaluate input
+                    try
+                    {
+                        // send user input to parser function
+                        int calculatedResult = evaluate.Calculate(1, 1, '+'); //test code -- fix when parser updated
+                        Console.WriteLine(calculatedResult);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine($"Sorry, { userInput } is not a valid request.");
+                        Console.WriteLine("Try again, something more simple like: 2 + 1. Take it easy on me");
+                    }
                 }
+                
             }
         }
     }
