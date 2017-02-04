@@ -13,8 +13,6 @@ namespace SimpleCalculator
         public string Operator { get; set; }
         public string leftValue { get; set; }
         public string rightValue { get; set; }
-        //string pattern = ;
-        //public string input = "2+2";
 
         public Expression()
         {
@@ -25,17 +23,13 @@ namespace SimpleCalculator
 
         public static string[] getMathExpression(string arg)
         {
-            Console.WriteLine("Expression Class.");
-
             Regex r = new Regex(@"^(?<number1>\w+)\s*(?<operator>[+\/\-%*]+)\s*(?<number2>\w+)\s*$", RegexOptions.IgnoreCase);
 
-            //Match m = r.Match("2+2");
             Match m = r.Match(arg);
 
-
+            var temporaryInstance = new Expression();
             if (m.Success)
             {
-                var temporaryInstance = new Expression();
                 temporaryInstance.leftValue = (string)m.Groups["number1"].Value;
                 temporaryInstance.Operator = m.Groups["operator"].Value;
                 temporaryInstance.rightValue = (string)m.Groups["number2"].Value;
@@ -43,7 +37,7 @@ namespace SimpleCalculator
             }
             else
             {
-                return new string[] { "Weird! Not working" };
+                return new string[] { temporaryInstance.leftValue };
             }
 
         }
