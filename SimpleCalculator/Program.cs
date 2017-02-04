@@ -16,7 +16,7 @@ namespace SimpleCalculator
             Parser parser = new Parser();
 
             // initialize Evaluator HERE
-            Evaluate evalute = new Evalute();
+            Evaluate evalute = new Evaluate();
 
             while (true)
             {

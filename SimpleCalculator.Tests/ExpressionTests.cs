@@ -10,7 +10,7 @@ namespace SimpleCalculator.Tests
         [TestMethod]
         public void TestCanIMakeSomething()
         {
-            Expression exp = new Expression();
+            Expression exp = new Expression(1, 2, '*');
             Assert.IsNotNull(exp);
         }
 

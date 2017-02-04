@@ -33,7 +33,5 @@ namespace SimpleCalculator
                 Operation = operation;
             }
         }
-
-        public Expression() { }
     }
 }
