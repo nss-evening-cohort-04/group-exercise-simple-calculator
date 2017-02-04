@@ -8,6 +8,7 @@ namespace SimpleCalculator
 {
     public class Expression
     {
+        //Evaluate eval = new Evaluate();
         public readonly int Operand1;
         public readonly int Operand2;
         public readonly char Operation;

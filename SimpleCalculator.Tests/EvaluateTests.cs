@@ -9,6 +9,21 @@ namespace SimpleCalculator.Tests
         Evaluate TestEvaluate = new Evaluate();
 
         [TestMethod]
+        public void CanIAdd()
+        {
+            Evaluate myEvaluate = new Evaluate();
+            int theAnswer = myEvaluate.Add(3, 4);
+            Assert.AreEqual(theAnswer, 7);
+        }
+        [TestMethod]
+        public void CanISubtract()
+        {
+            Evaluate myEvaluate = new Evaluate();
+            int theAnswer = myEvaluate.Subtract(7, 3);
+            Assert.AreEqual(theAnswer, 4);
+        }
+
+        [TestMethod]
         public void EnsureInstanceOfEvaluate()
         {
             Assert.IsNotNull(TestEvaluate);

@@ -16,7 +16,8 @@ namespace SimpleCalculator
             Parser parser = new Parser();
 
             // initialize Evaluator HERE
-            Evaluate evalute = new Evaluate();
+            Evaluate evaluate = new Evaluate();
+            int calculatedResult = evaluate.Calculate(parser.Operand1, parser.Operand2, parser.Operation);
 
             while (true)
             {
