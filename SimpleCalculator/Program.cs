@@ -48,7 +48,7 @@ namespace SimpleCalculator
                 else
                 {
                     // if not stored , then store
-                    Console.WriteLine($"   = saved "{firstOp}" as "{secondOpNum}"");
+                    Console.WriteLine($"   = saved {firstOp}as {secondOpNum}");
                     myConstants.Add(firstOp, secondOpNum);
 
                 }
