@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,9 @@ namespace SimpleCalculator
     {
         public static void Main(string[] args)
         {
+
             // Dictionary<string, int> myConstants = new Dictionary<string, int>();
+
             int counter = 0;
             string myOperator = " ";
             string currentCommand = "", previousCommand = "", firstOp = "", secondOp = "";
@@ -24,7 +26,9 @@ namespace SimpleCalculator
             var commandKeys = Expression.getMathExpression(currentCommand);
             firstOp = commandKeys[0];
             bool isNumeric1 = int.TryParse(firstOp, out firstOpNum);
+
             if(commandKeys.Length == 1)
+
             {
                 Console.WriteLine(firstOp);
                 if (!isNumeric1 && firstOp.Length > 1)
@@ -49,6 +53,15 @@ namespace SimpleCalculator
                     previousCommand = currentCommand;
                     goto START;
                 }
+
+                else
+                {
+                    // if not stored , then store
+                    Console.WriteLine($"   = saved {firstOp}as {secondOpNum}");
+                    myConstants.Add(firstOp, secondOpNum);
+
+                }
+
             }
             else
             {
@@ -108,8 +121,10 @@ namespace SimpleCalculator
 
             }
 
+
             END:
             Console.WriteLine("Bye!");
+
         }
     }
 }
