@@ -17,7 +17,6 @@ namespace SimpleCalculator
 
             // initialize Evaluator HERE
             Evaluate evaluate = new Evaluate();
-            int calculatedResult = evaluate.Calculate(parser.Operand1, parser.Operand2, parser.Operation);
 
             while (true)
             {
@@ -30,12 +29,12 @@ namespace SimpleCalculator
                 try
                 {
                     // send user input to parser function
-                    string calculatorAnswer = ""; // the result of the evaluate functions is stored in this variable
-                    Console.WriteLine(calculatorAnswer);
+                    int calculatedResult = evaluate.Calculate(parser.Operand1, parser.Operand2, parser.Operation);
+                    Console.WriteLine(calculatedResult);
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine($"Sorry, { userInput} is not a valid request.");
+                    Console.WriteLine($"Sorry, { userInput } is not a valid request.");
                     Console.WriteLine("Try again, something more simple like: 2 + 1. Take it easy on me");
                 }
             }
