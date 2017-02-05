@@ -23,7 +23,7 @@ namespace SimpleCalculator.Tests
             //Arrange
             Expression expressionInstance = new Expression();
             //Act
-            string[] expectedResult = new string[] {"2","+","2"};
+            string[] expectedResult = new string[] { "2", "+", "2" };
             string[] actualResult = Expression.getMathExpression("2+2");
             //Assert
             CollectionAssert.AreEqual(expectedResult, actualResult);
