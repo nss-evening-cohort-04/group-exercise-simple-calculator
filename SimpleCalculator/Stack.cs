@@ -9,21 +9,12 @@ namespace SimpleCalculator
     class Stack
     {
         public string LastQuery { get; set; }
-
         public int LastAnswer { get; set; }
 
-        public string setLastQuery(string userQuestion)
+        public Stack()
         {
-            LastQuery = userQuestion;
-            return LastQuery;
+            LastQuery = "No Previous Queries.";
+            LastAnswer = 0;
         }
-
-        public int setLastAnswer(int calculatorAnswer)
-        {
-            LastAnswer = calculatorAnswer;
-            return LastAnswer;
-        }
-
-
     }
 }
