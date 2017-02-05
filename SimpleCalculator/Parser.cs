@@ -12,7 +12,7 @@ namespace SimpleCalculator
        
         public Expression ParseInput(string input)
         {
-
+            var LastExpression = input;
             char[] operators = new char[] { '+', '-', '*', '%', '/' };
             try
             {

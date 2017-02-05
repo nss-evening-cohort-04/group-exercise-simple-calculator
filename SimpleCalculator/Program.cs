@@ -12,41 +12,44 @@ namespace SimpleCalculator
         {
 
             ////// foundational elements
-            // initialize Parser HERE
             Parser parser = new Parser();
-
-            // initialize Evaluator HERE
             Evaluate evaluate = new Evaluate();
-
+            Stack stack = new Stack();
             List<string> Escape = new List<string>() { "quit", "exit", "escape" }; // exit commands
-            string lastq = "lastq";
-            string lastanswer = "last";
 
-
-                while (true)
+            while (true)
             {
                 // ask the user for a basic mathematical equation
                 Console.WriteLine("Please type a basic expression you would like me to find the answer to.");
-                Console.WriteLine("Include one of the following operators: + - * /.");
+                Console.WriteLine("Include one of the following operators: + - * / %");
+
                 string userInput = Console.ReadLine();
+
+                if (userInput == "lastq")
+                {
+                    stack.setLastQuery(parser.LastExpression);
+                }
 
                 if (Escape.Contains(userInput))
                 {
                     Environment.Exit(0);
-                } else if (userInput.Equals(lastq))
+                } else if (userInput == "lastq")
                 {
-                    // lastq from stack
-                } else if (userInput.Equals(lastanswer))
+                    Console.WriteLine($"Last question: { stack.LastQuery }");
+                }
+                else if (userInput == "lasta")
                 {
-                    // calls lastanswer from stack
-                } else
-                {
-                    //evaluate input
+                    Console.WriteLine($"Last answer: { stack.LastAnswer }");
+                }
+                else
+                {                   
+                    // do the math
                     try
                     {
-                        // send user input to parser function
-                        int calculatedResult = evaluate.Calculate(1, 1, '+'); //test code -- fix when parser updated
+                        int calculatedResult = evaluate.Calculate(1, 1, '+'); //"sample/"test code -- fix when parser updated
                         Console.WriteLine(calculatedResult);
+                        stack.setLastAnswer(calculatedResult);
+                        Console.WriteLine("Type lastq for the last statement or type lasta for the last answer");
                     }
                     catch (Exception)
                     {
