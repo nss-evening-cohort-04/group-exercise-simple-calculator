@@ -46,6 +46,7 @@
     <Compile Include="Calculator.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="InputValidation.cs" />
+    <Compile Include="Math.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
