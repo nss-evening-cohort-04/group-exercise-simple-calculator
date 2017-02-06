@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SimpleCalculator
 {
@@ -11,45 +12,60 @@ namespace SimpleCalculator
         static void Main(string[] args)
         {
 
-            ////// foundational elements
             Parser parser = new Parser();
-            Evaluate evaluate = new Evaluate();
             Stack stack = new Stack();
+            // initialize Evaluator HERE
+            Evaluate evaluate = new Evaluate();
+            int counter = 0;
+
             List<string> Escape = new List<string>() { "quit", "exit", "escape" }; // exit commands
+            string lastq = "lastq";
+            string lastanswer = "last";
+
+            // ask the user for a basic mathematical equation
+            Console.WriteLine("Please type a basic expression you would like me to find the answer to.");
+            Console.WriteLine("Include one of the following operators: + - * / %.");
 
             while (true)
             {
-                // ask the user for a basic mathematical equation
-                Console.WriteLine("Please type a basic expression you would like me to find the answer to.");
-                Console.WriteLine("Include one of the following operators: + - * / %");
 
-                string userInput = Console.ReadLine();
-
-                if (userInput == "lastq")
-                {
-                    stack.setLastQuery(parser.LastExpression);
-                }
-
+                string userInput = ConsoleReadLineWithDefault($"[{counter}]> ");
+                counter++;
                 if (Escape.Contains(userInput))
                 {
+                    Console.WriteLine("Bye!!");
+                    System.Threading.Thread.Sleep(1000);
                     Environment.Exit(0);
-                } else if (userInput == "lastq")
-                {
-                    Console.WriteLine($"Last question: { stack.LastQuery }");
                 }
-                else if (userInput == "lasta")
+                else if (userInput.Equals(lastq))
                 {
-                    Console.WriteLine($"Last answer: { stack.LastAnswer }");
+                    // lastq from stack
+                    Console.WriteLine(stack.LastQuery);
+                }
+                else if (userInput.Equals(lastanswer))
+                {
+                    // calls lastanswer from stack
+                    Console.WriteLine(stack.LastAnswer);
                 }
                 else
-                {                   
-                    // do the math
+                {
+                    //evaluate input
                     try
                     {
-                        int calculatedResult = evaluate.Calculate(1, 1, '+'); //"sample/"test code -- fix when parser updated
-                        Console.WriteLine(calculatedResult);
-                        stack.setLastAnswer(calculatedResult);
-                        Console.WriteLine("Type lastq for the last statement or type lasta for the last answer");
+                        // send user input to parser function=
+                        stack.LastQuery = userInput;
+                        parser.ParseInput(userInput);
+                        if (!parser.Operator.Equals('!'))
+                        {
+                            int calculatedResult = evaluate.Calculate(parser.FirstTerm, parser.SecondTerm, parser.Operator); //test code -- fix when parser updated
+                            stack.LastAnswer = calculatedResult;
+                            Console.WriteLine($" = {calculatedResult}");            
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Sorry, { userInput } is not a valid request.");
+                            Console.WriteLine("Try again, something more simple like: 2 + 1. Take it easy on me");
+                        }
                     }
                     catch (Exception)
                     {
@@ -57,8 +73,13 @@ namespace SimpleCalculator
                         Console.WriteLine("Try again, something more simple like: 2 + 1. Take it easy on me");
                     }
                 }
-                
             }
+        }
+
+        public static string ConsoleReadLineWithDefault(string defaultValue)
+        {
+            Console.Write(defaultValue);
+            return Console.ReadLine();
         }
     }
 }
