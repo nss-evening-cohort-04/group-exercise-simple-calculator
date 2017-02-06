@@ -18,13 +18,16 @@ namespace SimpleCalculator
             Evaluate evaluate = new Evaluate();
             int counter = 0;
 
-            List<string> Escape = new List<string>() { "quit", "exit", "escape" }; // exit commands
+            List<string> Escape = new List<string>() { "quit", "exit", "escape", "stop" }; // exit commands
             string lastq = "lastq";
             string lastanswer = "last";
 
             // ask the user for a basic mathematical equation
             Console.WriteLine("Please type a basic expression you would like me to find the answer to.");
             Console.WriteLine("Include one of the following operators: + - * / %.");
+            Console.WriteLine("Get your last answer by typing last");
+            Console.WriteLine("Get your last question by typing lastq");
+            Console.WriteLine("Exit at anytime by typing exit / quit / escape / stop");
 
             while (true)
             {
