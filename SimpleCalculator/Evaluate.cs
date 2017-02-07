@@ -11,8 +11,9 @@ namespace SimpleCalculator
     {
         public int Calculate(int Operand1, int Operand2, char Operation)
         {
-            int result = 0; 
+            int result = 0; // have to set result variable as an int
 
+            // switch statement to actually calculate 
             switch (Operation)
             {
                 case '+':
@@ -46,9 +47,9 @@ namespace SimpleCalculator
             }
 
             return result;
-
         }
 
+        // Evaluations
         public int Add(int operandOne, int operandTwo)
         {
             return operandOne + operandTwo;

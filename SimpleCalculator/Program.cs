@@ -14,8 +14,10 @@ namespace SimpleCalculator
 
             Parser parser = new Parser();
             Stack stack = new Stack();
-            // initialize Evaluator HERE
-            Evaluate evaluate = new Evaluate();
+            Dictionary<char, int> constants = new Dictionary<char, int>();
+
+        // initialize Evaluator HERE
+        Evaluate evaluate = new Evaluate();
             int counter = 0;
 
             List<string> Escape = new List<string>() { "quit", "exit", "escape", "stop" }; // exit commands
