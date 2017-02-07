@@ -16,8 +16,8 @@ namespace SimpleCalculator
             Stack stack = new Stack();
             Dictionary<char, int> constants = new Dictionary<char, int>();
 
-        // initialize Evaluator HERE
-        Evaluate evaluate = new Evaluate();
+            // initialize Evaluator HERE
+            Evaluate evaluate = new Evaluate();
             int counter = 0;
 
             List<string> Escape = new List<string>() { "quit", "exit", "escape", "stop" }; // exit commands
@@ -60,11 +60,47 @@ namespace SimpleCalculator
                         // send user input to parser function=
                         stack.LastQuery = userInput;
                         parser.ParseInput(userInput);
+                        int firstTerm = 0;
+                        int secondTerm = 0;
                         if (!parser.Operator.Equals('!'))
                         {
-                            int calculatedResult = evaluate.Calculate(parser.FirstTerm, parser.SecondTerm, parser.Operator); //test code -- fix when parser updated
-                            stack.LastAnswer = calculatedResult;
-                            Console.WriteLine($" = {calculatedResult}");            
+                            if (parser.Operator.Equals('='))
+                            {
+                                try
+                                {
+                                    constants.Add(char.Parse(parser.FirstTerm.ToLower()), int.Parse(parser.SecondTerm));
+                                }
+                                catch (ArgumentException)
+                                {
+                                    Console.WriteLine($"A constant with key \"{parser.FirstTerm}\" already exists.");
+                                }
+                            }
+                            else
+                            {
+                                if (constants.ContainsKey(char.Parse(parser.FirstTerm.ToLower())) && constants.ContainsKey(char.Parse(parser.SecondTerm)))
+                                {
+                                    firstTerm = constants[char.Parse(parser.FirstTerm.ToLower())];
+                                    secondTerm = constants[char.Parse(parser.SecondTerm)];
+                                }
+                                else if (constants.ContainsKey(char.Parse(parser.FirstTerm.ToLower())))
+                                {
+                                    firstTerm = constants[char.Parse(parser.FirstTerm.ToLower())];
+                                    secondTerm = int.Parse(parser.SecondTerm);
+                                }
+                                else if (constants.ContainsKey(char.Parse(parser.SecondTerm)))
+                                {
+                                    firstTerm = int.Parse(parser.FirstTerm);
+                                    secondTerm = constants[char.Parse(parser.SecondTerm.ToLower())];
+                                }
+                                else
+                                {
+                                    firstTerm = int.Parse(parser.FirstTerm);
+                                    secondTerm = int.Parse(parser.SecondTerm);
+                                }
+                                int calculatedResult = evaluate.Calculate(firstTerm, secondTerm, parser.Operator); //test code -- fix when parser updated
+                                stack.LastAnswer = calculatedResult;
+                                Console.WriteLine($" = {calculatedResult}");
+                            }
                         }
                         else
                         {
