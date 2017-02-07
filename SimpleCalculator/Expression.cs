@@ -25,7 +25,7 @@ namespace SimpleCalculator
                 Operand2 = operandTwo;
             }
 
-            if ("+-*/".IndexOf(operation) == -1)
+            if ("+-*/%".IndexOf(operation) == -1)
             {
                 throw new ArgumentException("Nope, sorry. I can not perform this action. Try again.");
             }
