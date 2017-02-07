@@ -17,15 +17,16 @@ namespace SimpleCalculator.Tests
         {
             //Assert
             Stack myStack = new Stack();
-            string lastq = ("2 + 2");
+            myStack.LastQuery = ("2 + 2");
             Assert.AreEqual(myStack.LastQuery, ("2 + 2"));
         }
         [TestMethod]
         public void CanISetLastAnswer()
         {
             Stack myStack = new Stack();
-            string lastanswer = "4";
-            Assert.AreEqual(myStack.LastAnswer, "4");
+            myStack.LastAnswer = 4;
+            Assert.AreEqual(myStack.LastAnswer, 4);
+
         }
     }
 }
