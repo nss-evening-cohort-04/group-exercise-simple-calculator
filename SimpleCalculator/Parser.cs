@@ -9,34 +9,35 @@ namespace SimpleCalculator
 {
     public class Parser
     {
-       
-        public Expression ParseInput(string input)
-        {
+        public int FirstTerm { get; set; }
+        public int SecondTerm { get; set; }
+        public char Operator { get; set; }
 
-            char[] operators = new char[] { '+', '-', '*', '%', '/' };
+        public void ParseInput(string input)
+        {
             try
             {
-                string[] splitStr = input.Trim().Split(operators);
-                int firstTerm = -1;
-                int secondTerm = -1;
-                char mathOperator = 'a';
-                if (splitStr.Length > 1)
+                string pattern = @"(\w+)\s*([\+\-*\/%])\s*(\w+)";
+
+                Match match = Regex.Match(input, pattern);
+                if (match.Success)
                 {
-                    firstTerm = int.Parse(splitStr[0].Trim());
-                    mathOperator = input[splitStr[0].Length];
-                    secondTerm = int.Parse(splitStr[1].Trim());
-                };
-                    
-                return new Expression(firstTerm, secondTerm, mathOperator);
+                    FirstTerm = int.Parse(match.Groups[1].Value);
+                    Operator = char.Parse(match.Groups[2].Value);
+                    SecondTerm = int.Parse(match.Groups[3].Value);
+                }
+                else
+                {
+                    throw new ArgumentException("Bad Expression entered.");
+                }
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                Console.WriteLine(e.Message);
+                Operator = '!';
             }
 
         }
-
-
     }
 }
