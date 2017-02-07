@@ -41,7 +41,14 @@ namespace SimpleCalculator
                     Console.WriteLine(previousCommand);
                     break;
                 case "getConstant":
-                    Console.WriteLine(myConstants[firstOp]);
+                    if (myConstants.ContainsKey(firstOp))
+                    {
+                        Console.WriteLine(myConstants[firstOp]);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"   Constant '{firstOp}' not exist!");
+                    }
                     break;
                 default:
                     myOperator = commandKeys[1];
@@ -61,8 +68,28 @@ namespace SimpleCalculator
                             }
                             break;
                         case "calculate":
-                            if (!isNumeric1) firstOpNum = myConstants[firstOp];
-                            if (!isNumeric2) secondOpNum = myConstants[secondOp];
+                            if (!isNumeric1)
+                            {
+                                if (myConstants.ContainsKey(firstOp))
+                                {
+                                    firstOpNum = myConstants[firstOp];
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"   Constant '{firstOp}' not exist!");
+                                }
+                            }
+                            if (!isNumeric2)
+                            {
+                                if (myConstants.ContainsKey(secondOp))
+                                {
+                                    secondOpNum = myConstants[secondOp];
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"   Constant '{secondOp}' not exist!");
+                                }
+                            }
                             calcResult = Calculator.calculate(firstOpNum, secondOpNum, myOperator);
                             Console.WriteLine(calcResult);
                             break;
