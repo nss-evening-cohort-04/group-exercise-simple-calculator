@@ -12,14 +12,15 @@ namespace SimpleCalculator.Tests
             Stack myStack = new Stack();
             Assert.IsNotNull(myStack);
         }
+
         [TestMethod]
         public void CanISetLastQuery()
         {
-            //Assert
             Stack myStack = new Stack();
             myStack.LastQuery = ("2 + 2");
             Assert.AreEqual(myStack.LastQuery, ("2 + 2"));
         }
+
         [TestMethod]
         public void CanISetLastAnswer()
         {

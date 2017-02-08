@@ -6,15 +6,22 @@ namespace SimpleCalculator.Tests
     [TestClass]
     public class EvaluateTests
     {
-        Evaluate TestEvaluate = new Evaluate();
+
+        [TestMethod]
+        public void EnsureInstanceOfEvaluate()
+        {
+            Evaluate TestEvaluate = new Evaluate();
+            Assert.IsNotNull(TestEvaluate);
+        }
 
         [TestMethod]
         public void CanIAdd()
         {
             Evaluate myEvaluate = new Evaluate();
-            int theAnswer = myEvaluate.Add(3, 4);
-            Assert.AreEqual(theAnswer, 7);
+            int theAnswer = myEvaluate.Add(13, 4);
+            Assert.AreEqual(theAnswer, 17);
         }
+
         [TestMethod]
         public void CanISubtract()
         {
@@ -24,36 +31,35 @@ namespace SimpleCalculator.Tests
         }
 
         [TestMethod]
-        public void EnsureInstanceOfEvaluate()
-        {
-            Assert.IsNotNull(TestEvaluate);
-        }
-
-        [TestMethod]
         public void EnsureCanMultiply()
         {
-            int a = 3;
-            int b = 4;
-
-            Assert.AreEqual(TestEvaluate.Multiply(a, b), 12);
+            Evaluate myEvaluate = new Evaluate();
+            int theAnswer = myEvaluate.Multiply(3, 10);
+            Assert.AreEqual(theAnswer, 30);
         }
 
         [TestMethod]
         public void EnsureCanDivide()
         {
-            int a = 6;
-            int b = 3;
-
-            Assert.AreEqual(TestEvaluate.Divide(a, b), 2);
+            Evaluate myEvaluate = new Evaluate();
+            int theAnswer = myEvaluate.Divide(10, 5);
+            Assert.AreEqual(theAnswer, 2);
         }
 
         [TestMethod]
         public void EnsureCanModulus()
         {
-            int a = 5;
-            int b = 2;
+            Evaluate myEvaluate = new Evaluate();
+            int theAnswer = myEvaluate.Modulus(5, 2);
+            Assert.AreEqual(theAnswer, 1);
+        }
 
-            Assert.AreEqual(TestEvaluate.Modulus(a, b), 1);
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestBadEvaluateInput()
+        {
+            Evaluate myEvaluate = new Evaluate();
+            myEvaluate.Modulus("x", 2);
         }
     }
 }
