@@ -6,11 +6,11 @@ namespace SimpleCalculator.Tests
     [TestClass]
     public class EvaluateTests
     {
-        Evaluate TestEvaluate = new Evaluate();
 
         [TestMethod]
         public void EnsureInstanceOfEvaluate()
         {
+            Evaluate TestEvaluate = new Evaluate();
             Assert.IsNotNull(TestEvaluate);
         }
 
