@@ -13,11 +13,10 @@ namespace SimpleCalculator
         public static void Main(string[] args)
         {
 
-            Dictionary<string, int> myConstants = new Dictionary<string, int>();
-
+            Storage storage = new Storage();
             int counter = 0;
             string myOperator = "";
-            string currentCommand = "", previousCommand = "", firstOp = "", secondOp = "";
+            string currentCommand = "", firstOp = "", secondOp = "";
             int firstOpNum, secondOpNum, calcResult = 0;
 
             START:
@@ -35,15 +34,15 @@ namespace SimpleCalculator
                 case "exit":
                     goto END;
                 case "last":
-                    Console.WriteLine(calcResult);
+                    Console.WriteLine(storage.last);
                     break;
                 case "lastq":
-                    Console.WriteLine(previousCommand);
+                    Console.WriteLine(storage.lastq);
                     break;
                 case "getConstant":
-                    if (myConstants.ContainsKey(firstOp))
+                    if (Storage.myConstants.ContainsKey(firstOp))
                     {
-                        Console.WriteLine(myConstants[firstOp]);
+                        Console.WriteLine(Storage.myConstants[firstOp]);
                     }
                     else
                     {
@@ -57,22 +56,22 @@ namespace SimpleCalculator
                     switch (action)
                     {
                         case "saveConstant":
-                            if (myConstants.ContainsKey(firstOp))
+                            if (Storage.myConstants.ContainsKey(firstOp))
                             {
                                 Console.WriteLine("   = Error!");
                             }
                             else
                             {
                                 Console.WriteLine($"   = saved '{firstOp}' as '{secondOpNum}'");
-                                myConstants[firstOp] = secondOpNum;
+                                Storage.myConstants[firstOp] = secondOpNum;
                             }
                             break;
                         case "calculate":
                             if (!isNumeric1)
                             {
-                                if (myConstants.ContainsKey(firstOp))
+                                if (Storage.myConstants.ContainsKey(firstOp))
                                 {
-                                    firstOpNum = myConstants[firstOp];
+                                    firstOpNum = Storage.myConstants[firstOp];
                                 }
                                 else
                                 {
@@ -81,9 +80,9 @@ namespace SimpleCalculator
                             }
                             if (!isNumeric2)
                             {
-                                if (myConstants.ContainsKey(secondOp))
+                                if (Storage.myConstants.ContainsKey(secondOp))
                                 {
-                                    secondOpNum = myConstants[secondOp];
+                                    secondOpNum = Storage.myConstants[secondOp];
                                 }
                                 else
                                 {
@@ -91,12 +90,13 @@ namespace SimpleCalculator
                                 }
                             }
                             calcResult = Calculator.calculate(firstOpNum, secondOpNum, myOperator);
+                            storage.last = calcResult;
                             Console.WriteLine(calcResult);
                             break;
                     }
                     break;
             }
-            previousCommand = currentCommand;
+            storage.lastq = currentCommand;
             counter++;
             goto START;
 
