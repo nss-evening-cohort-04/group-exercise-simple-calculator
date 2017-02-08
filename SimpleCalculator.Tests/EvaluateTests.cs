@@ -53,13 +53,5 @@ namespace SimpleCalculator.Tests
             int theAnswer = myEvaluate.Modulus(5, 2);
             Assert.AreEqual(theAnswer, 1);
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestBadEvaluateInput()
-        {
-            Evaluate myEvaluate = new Evaluate();
-            myEvaluate.Modulus("x", 2);
-        }
     }
 }

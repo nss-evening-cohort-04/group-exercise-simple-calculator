@@ -29,6 +29,7 @@ namespace SimpleCalculator
             Console.WriteLine("Include one of the following operators: + - * / %.");
             Console.WriteLine("Get your last answer by typing last");
             Console.WriteLine("Get your last question by typing lastq");
+            Console.WriteLine("You can also define constants to use in your expressions. ( x = 1 )");
             Console.WriteLine("Exit at anytime by typing exit / quit / escape / stop");
 
             while (true)
@@ -77,7 +78,43 @@ namespace SimpleCalculator
                             }
                             else
                             {
-                                if (constants.ContainsKey(char.Parse(parser.FirstTerm.ToLower())) && constants.ContainsKey(char.Parse(parser.SecondTerm)))
+                                if (parser.FirstTerm.Length > 1)
+                                {
+                                    if (parser.SecondTerm.Length > 1)
+                                    {
+                                        firstTerm = int.Parse(parser.FirstTerm);
+                                        secondTerm = int.Parse(parser.SecondTerm);
+                                    }
+                                    else
+                                    {
+                                        firstTerm = int.Parse(parser.FirstTerm);
+                                        if (constants.ContainsKey(char.Parse(parser.SecondTerm)))
+                                        {
+                                            secondTerm = constants[char.Parse(parser.SecondTerm)];
+                                        }
+                                        else
+                                        {
+                                            secondTerm = int.Parse(parser.SecondTerm);
+                                        }
+
+                                    }
+
+                                }
+                                else if (parser.SecondTerm.Length > 1 && parser.FirstTerm.Length == 1)
+                                {
+
+                                    if (constants.ContainsKey(char.Parse(parser.FirstTerm)))
+                                    {
+                                        firstTerm = constants[char.Parse(parser.FirstTerm)];
+                                    }
+                                    else
+                                    {
+                                        firstTerm = int.Parse(parser.SecondTerm);
+                                    }
+
+                                    secondTerm = int.Parse(parser.SecondTerm);
+                                }
+                                else if (constants.ContainsKey(char.Parse(parser.FirstTerm.ToLower())) && constants.ContainsKey(char.Parse(parser.SecondTerm)))
                                 {
                                     firstTerm = constants[char.Parse(parser.FirstTerm.ToLower())];
                                     secondTerm = constants[char.Parse(parser.SecondTerm)];
