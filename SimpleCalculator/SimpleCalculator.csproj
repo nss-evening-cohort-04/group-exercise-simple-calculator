@@ -43,8 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Storage\MathProblemStack.cs" />
+    <Compile Include="Operations\Addition.cs" />
+    <Compile Include="Storage\Constant.cs" />
+    <Compile Include="Storage\Expression.cs" />
+    <Compile Include="Operations\Division.cs" />
+    <Compile Include="Operations\Modulus.cs" />
+    <Compile Include="Operations\Multiplication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Operations\Subtraction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
