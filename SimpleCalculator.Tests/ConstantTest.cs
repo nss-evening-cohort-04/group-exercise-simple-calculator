@@ -4,11 +4,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace SimpleCalculator.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class ConstantTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void CheckInstance()
         {
+            ConstantStorage constant = new ConstantStorage();
+            Assert.IsNotNull(constant);
         }
+
     }
 }
