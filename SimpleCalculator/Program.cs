@@ -96,7 +96,10 @@ namespace SimpleCalculator
                     }
                     break;
             }
-            storage.lastq = currentCommand;
+            if (currentCommand.ToLower() != "last" && currentCommand.ToLower() != "lastq")
+            {
+                storage.lastq = currentCommand;
+            }
             counter++;
             goto START;
 
